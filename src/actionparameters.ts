@@ -43,10 +43,10 @@ export class ActionParameters {
     private _restart: string;
 
     private constructor(endpoint: IAuthorizer) {
-        this._publishProfileContent = core.getInput('publish-profile');
-        this._appName = core.getInput('app-name');
-        this._slotName = core.getInput('slot-name');
-        this._packageInput = core.getInput('package');
+        this._publishProfileContent = process.env["PUBLISH_PROFILE"] ?? core.getInput('publish-profile');
+        this._appName = process.env["APP_NAME"] ?? core.getInput('app-name');
+        this._slotName = process.env["SLOT_NAME"] ?? core.getInput('slot-name');
+        this._packageInput = process.env["PACKAGE"] ?? core.getInput('package');
         this._images = core.getInput('images');
         this._multiContainerConfigFile = core.getInput('configuration-file');
         this._startupCommand = core.getInput('startup-command');
